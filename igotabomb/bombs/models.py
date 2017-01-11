@@ -2,13 +2,12 @@ from __future__ import unicode_literals
 from django.contrib.gis.db import models
 from django.utils.functional import cached_property
 
-class Bomb(models.Model):
+class BombType(models.Model):
     name = models.CharField(max_length=50)
-    location = models.PointField()
     duration_starting = models.DateTimeField()
     duration_ending = models.DateTimeField()
-    brange = models.IntegerField()
-    image = models.ImageField(upload_to="bombs/", null=True, blank=True)
+    brange = models.IntegerField(help_text='in kms')
+    image = models.ImageField(upload_to='bombs/', null=True, blank=True)
     user_change_location = models.BooleanField(default=False)
     change_location = models.BooleanField(default=False)
     stealth = models.BooleanField(default=False)
